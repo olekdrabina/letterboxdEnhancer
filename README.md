@@ -26,7 +26,7 @@ Enhances the Letterboxd site with a range of useful quality-of-life improvements
    - Firefox: click “Load Temporary Add-on”
 4. **Load the extension**  
    - Chromium-based: click “Load unpacked” and select the folder containing the extension files  
-   - Firefox: click “Load Temporary Add-on” and select the main `.xpi` or manifest file
+   - Firefox: click “Load Temporary Add-on” and select the `manifest.json` file inside the extension folder
 ### Notes
 - This is a **user script / local extension**, so it may need to be reloaded after browser updates
 - Works best in Chromium-based browsers (Chrome, Brave, Edge). Firefox support is partial
