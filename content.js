@@ -1,10 +1,13 @@
-const selectors = [
+const hideSelectors = [
     "#film-page-wrapper > div.col-17 > aside > section.section.ratings-histogram-chart",
     "#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-top250",
     "#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-likes",
     "#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-popular-reviews",
     "#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-recent-reviews",
-    "#film-page-wrapper > div.col-17 > section.section.activity-from-friends.-clear.-friends-watched.-no-friends-want-to-watch"
+    "#film-page-wrapper > div.col-17 > section.section.activity-from-friends.-clear.-friends-watched.-no-friends-want-to-watch",
+    "#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-popular-friend-reviews",
+    "#production-popular-lists",
+    "#lists"
 ]
 
 // hide while loading
@@ -37,17 +40,28 @@ function passive() {
     const selectorsToRemove = [
         "#watch > div.other.-message.js-not-streaming",
         "#watch > div.other.-message",
-        'ul.js-actions-panel > li:nth-last-of-type(2)',
         "#userpanel > ul > li.panel-sharing.sharing-toggle.js-actions-panel-sharing",
         "#film-page-wrapper > div.col-17 > section.section-margin.film-news",
         "#film-page-wrapper > div.col-17 > section.section.related-films.-clear > div.nanocrowd-attribution.-is-not-stacked",
         "#film-hq-mentions",
         "#content > div.content-wrap > div.banner.banner-950.js-hide-in-app",
         "#latest-news",
-        "#userpanel > ul > li:nth-child(2)",
         "#content > div > div > aside > section.activity-settings.js-activity-filters.pro-message > form > small",
     ]
     selectorsToRemove.forEach(removeIfExists)
+
+    // when where to watch empty then remove its header
+    const watch = document.querySelector("#watch")
+    const header = document.querySelector("#js-poster-col > section.watch-panel.js-watch-panel > div.header")
+    const headerHr = document.querySelector("#js-poster-col > section.watch-panel.js-watch-panel")
+    if (watch && watch.querySelectorAll("section").length == 0 && header && headerHr) {
+        header.remove()
+        headerHr.remove()
+    }
+
+    // film page patron ad
+    const patronAd = document.querySelector("ul.js-actions-panel > li:last-of-type")
+    if (patronAd && patronAd.children[0]?.children[0]?.tagName == 'SPAN' && patronAd.children[0].children[0].textContent.toLowerCase() == 'patron') patronAd.remove()
 
     // remove weird margin div after "Popular on Letterboxd"
     function removeDynamicDivAfterPopular() {
@@ -58,7 +72,7 @@ function passive() {
 
         function checkNext() {
             let next = popular.nextElementSibling
-            while (next && next.tagName.toLowerCase() === "div") {
+            while (next && next.tagName.toLowerCase() == "div") {
                 next.remove()
                 next = popular.nextElementSibling
             }
@@ -105,6 +119,11 @@ function passive() {
     } else if (justwatchServices) {
         justwatchServices.remove()
     }
+
+    if (!window.location.href.startsWith("https://letterboxd.com/film/")) {
+        let listProAd = document.querySelector("#userpanel > ul > li:nth-child(2)")
+        if (listProAd) listProAd.remove()
+    }
 }
 
 // hide/show rating
@@ -123,7 +142,7 @@ function hideRatings() {
             displayState = ""
             toggleBtn.textContent = "Hide rating"
         }
-        selectors.forEach(sel => { 
+        hideSelectors.forEach(sel => { 
             const el = document.querySelector(sel)
             if (sel == "#film-page-wrapper > div.col-17 > section.section.activity-from-friends.-clear.-friends-watched.-no-friends-want-to-watch") {
                 let friends = document.querySelectorAll("#film-page-wrapper > div.col-17 > section.section.activity-from-friends.-clear > ul > li > a > span.rating")

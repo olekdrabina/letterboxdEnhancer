@@ -1,7 +1,8 @@
 # Letterboxd Enchancer
 Enhances the Letterboxd site with a range of useful quality-of-life improvements for a cleaner, more focused experience
 
-**This extension has not been tested on Pro or Patron accounts**
+- This extension has not been tested on Pro or Patron accounts
+- Firefox is not currently supported, but support is planned
 
 ## Features
 - Adds a toggle button on film pages to show or hide:
@@ -12,24 +13,15 @@ Enhances the Letterboxd site with a range of useful quality-of-life improvements
   - Top 250 letterboxd crown
 - Automatically hides ratings for unwatched movies and shows them when watched
 - Removes ads, banners, and 'Upgrade to Pro' prompts
-- Hides news section and 'Not streaming' messages
+- Miscellaneous interface and functionality improvements
 
 ## Installation
-### For Users
-1. **Download the extension files**  
-   - Clone this repository or download the ZIP file and extract it
-2. **Open your browser’s extensions page**  
-   - Chromium-based browsers (Chrome, Brave, Edge): `chrome://extensions/`  
-   - Firefox: `about:debugging#/runtime/this-firefox`
-3. **Enable Developer Mode**  
-   - Chromium-based: toggle the “Developer mode” switch at the top right  
-   - Firefox: click “Load Temporary Add-on”
-4. **Load the extension**  
-   - Chromium-based: click “Load unpacked” and select the folder containing the extension files  
-   - Firefox: click “Load Temporary Add-on” and select the `manifest.json` file inside the extension folder
+1. Clone this repository or download the ZIP file and extract it
+2. Open `chrome://extensions/`  
+3. Toggle the “Developer mode” switch at the top right  
+4. Click “Load unpacked” and select the folder containing the extension files  
 ### Notes
 - This is a **user script / local extension**, so it may need to be reloaded after browser updates
-- Works best in Chromium-based browsers (Chrome, Brave, Edge). Firefox support is partial
 - Make sure you allow the extension to run on `letterboxd.com`
 
 ## Issues & Suggestions
