@@ -1,0 +1,5 @@
+- make everything happen faster than 1 second timeout
+- settings.html:
+    existing features:
+        - 
+    new feature:

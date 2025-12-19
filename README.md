@@ -34,6 +34,6 @@ If you encounter bugs, have ideas for improvements, or want new features, you ca
 ### Show rating button
 ![Button photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/button.png)
 ### Rating Hidden
-![Rating hidden photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating-hidden.png)
+![Rating hidden photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_hidden.png)
 ### Rating Shown
-![Rating shown photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating-shown.png)
+![Rating shown photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_shown.png)
