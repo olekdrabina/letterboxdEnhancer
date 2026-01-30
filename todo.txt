@@ -1,13 +1,16 @@
-- add options description and screenshot to readme
+changes:
+- split settings by page
+- hidePopularFilmsWeek watches & likes & lists
+- hidePopularReviewsRating on home & films page
+- faster hide rating loading
+
+- show popular reviews when watched
 
 - import export
 - release in chrome web store
 - firefox support
-- make everything happen faster than .5 second timeout in hide-rating
 - hide tv shows & short films on default
 - more than letterboxd top250
-- margin-top: -21px; for document.querySelector("#content > div > div.cols-3.overflow > aside > section:nth-child(1) > h3")
-- hide ratings
 - hide likes & top250 on "POPULAR FILMS THIS WEEK"
 - hide ratings in "POPULAR REVIES THIS WEEK" & "NEW FROM FRIENDS"
 - something custom on film page for some movies (default off)
@@ -15,7 +18,7 @@
 - hide ratings in "REVIEWS YOU LIKED" on film page
 - defaults search films
 - go to film butotn (3 dots when hovering on movie from "NEW FROM FRIENDS")
-- move "LATEST NEWS" under "POPULAR LISTS" on main page
+- move "LATEST NEWS" under "POPULAR LISTS" on main pagegit
 - convert all ratings to 5 or 10 point scale
 - hide rating on reviews page and hide ratings of liked reviews there
 - hide show supported html, reviews & list description editor enchancer (adding supported html with one click - <a href=""> <strong> <em> <b> <i> <blockquote>)

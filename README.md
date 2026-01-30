@@ -27,13 +27,18 @@ Enhances the Letterboxd site with a range of useful quality-of-life improvements
 ## Issues & Suggestions
 If you encounter bugs, have ideas for improvements, or want new features, you can help:
 - **Report issues:** Use the [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page on GitHub to report bugs or unexpected behavior
-- **Suggest features:** Submit feature requests or suggestions through the same Issues page
+- **Suggest features:** Submit feature requests or suggestions through the same [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page
 - **Contribute:** Fork the repository, make changes, and submit a pull request
 
 ## Preview
 ### Settings Page
-![Settings page photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/settings_page.png)
+
+<img src="https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/settings_page.png" width="300">
+
 ### Rating Hidden
-![Rating hidden photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_hidden.png)
+
+<img src="https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_hidden.png" width="500">
+
 ### Rating Shown
-![Rating shown photo](https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_shown.png)
+
+<img src="https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_shown.png" width="500">

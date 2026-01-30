@@ -174,7 +174,7 @@ if (window.location.href.startsWith("https://letterboxd.com/film/")) {
             }
             setTimeout(() => {
                 hideRatings()
-            }, 1000)
+            }, 500)
 
             // initial run
             setTimeout(() => {
@@ -185,7 +185,7 @@ if (window.location.href.startsWith("https://letterboxd.com/film/")) {
                         el.style.visibility = "visible"
                     }
                 })
-            }, 1000)
+            }, 500)
         }
     })
 }
