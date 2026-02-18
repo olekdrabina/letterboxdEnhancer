@@ -4,7 +4,7 @@ async function saveSetting(key, value) {
 }
 async function loadSetting(key, defaultValue) {
     const result = await chrome.storage.local.get([key])
-    if (result[key] === undefined) {
+    if (result[key] == undefined) {
         await saveSetting(key, defaultValue)
         return defaultValue
     }
@@ -14,15 +14,11 @@ async function loadSetting(key, defaultValue) {
 // settings list
 const settings = [
     {name: "<b>All Features Toggle</b>", key: "extensionState", special: "masterSwitch"},
-    {content: "FILM PAGE"},
-    {name: "Hide \"where to watch\" when not streaming", state: true, key: "hideJustWatch"},
-    {name: "Hide news", state: true, key: "hideNews"},
-    {name: "Hide \"Mentioned By\"", state: true, key: "hideMentionedBy"},
     {content: "SHOW/HIDE RATING"},
     {name: "Generate show/hide button", state: true, key: "generateShowHideButton"},
     {name: "Hide rating", state: true, key: "hideRating"},
-    {name: "Hide watches", state: true, key: "hideWatches"},
-    {name: "Hide list appears", state: true, key: "hideListAppears"},
+    {name: "Hide watches", state: false, key: "hideWatches"},
+    {name: "Hide list appears", state: false, key: "hideListAppears"},
     {name: "Hide likes", state: true, key: "hideLikes"},
     {name: "Hide top250", state: true, key: "hideTop250"},
     {name: "Hide friends ratings", state: true, key: "hideFriendsRatings"},
@@ -33,6 +29,17 @@ const settings = [
     {name: "Hide popular lists", state: true, key: "hidePopularLists"},
     {name: "Hide your lists", state: false, key: "hideYourLists"},
     {name: "Hide lists you liked", state: true, key: "hideListsYouLiked"},
+    {content: "FILM PAGE"},
+    {name: "Hide \"where to watch\" when not streaming", state: true, key: "hideJustWatch"},
+    {name: "Hide news", state: true, key: "hideNews"},
+    {name: "Hide \"Mentioned By\"", state: true, key: "hideMentionedBy"},
+    {content: "HOME PAGE"},
+    {name: "Hide ratings from popular reviews", state: true, key: "hidePopularReviewsHome"},
+    {content: "FILMS PAGE"},
+    {name: "Hide watches from popular films", state: false, key: "hidePopularFilmsWatchesFilms"},
+    {name: "Hide list appears from popular films", state: false, key: "hidePopularFilmsListsFilms"},
+    {name: "Hide likes from popular films", state: false, key: "hidePopularFilmsLikesFilms"},
+    {name: "Hide ratings from popular reviews", state: true, key: "hidePopularReviewsFilms"},
     {content: "OTHER"},
     {name: "Ad block", state: true, key: "adblock"},
     {name: "Make reviews page wider", state: true, key: "reviewsPageWider"},
