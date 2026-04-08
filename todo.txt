@@ -1,0 +1,81 @@
+- release in chrome web store
+- firefox support
+
+changes:
+- hiding rating & lists & likes & top500 in popular films this week on films page
+- hiding rating in popular reviews this week on films & home page
+- hide watches & list appears on film page option
+- hide news & mentioned by option
+- hide "where to watch" when not streaming option
+- import & export settings
+- wiki & mojo button at more at
+- budget & box office at details (button for both?)
+- br after movie title on film page
+- mpa rating (hover, and clickable)
+- option to hide things on unreleased movies too
+- show friendly hours option (then minutes in tooltip else friendly in tooltip)
+- html formatting (option to turn off shortcuts (hide tooltip then too), option to turn off buttons)
+- removed option to set consistent border radius
+!!!WRITE ALL THIS TO README AND SETTINGS!!!
+every feature is avaible in settings for full customization
+
+- display likes, films per day/week/month on profile pages
+- filter by country & language & runtime
+- split each page to separate file
+- not icon adder but look for sites from this https://www.reddit.com/r/Letterboxd/comments/1oltnwm/i_created_betterboxd_letterboxd_icon_adder_a/
+- https://chromewebstore.google.com/detail/friends-average-for-lette/fffalfghjklopnhmkpdadlfopnnbnabg
+- https://chromewebstore.google.com/detail/letterboxd-film-list-filt/mhibfhbacdpnhgkokldppdnckdahnbhh
+- https://chromewebstore.google.com/detail/find-in-letterboxd/peelfmpndjghimfolkdbflpnekngeioh
+- https://chromewebstore.google.com/detail/dogboxd-trigger-warnings/jjaaphmnakildnlgookngnamekoalajm
+- https://chromewebstore.google.com/detail/sbl-slightly-better-lette/bcedenoajjhbehkchgopednpcgggjlni
+- https://chromewebstore.google.com/detail/letterboxd-search-autocom/dklhllepnaoaanbkmjmimceipbgblkjb
+- https://chromewebstore.google.com/detail/enhancer-for-letterboxd/abkbjnimmidipmhhhlcnikkifjpdjdpc
+- info button in settings (for certain settings)
+- cool progress bar as background for list names
+- automatically show rating for popular films this week and popular reviews when movie is watched
+- hide tv shows & short films on default
+- more than letterboxd top500
+- hide ratings in "NEW FROM FRIENDS" (auto show when movie watched)
+- something custom on film page for some movies (default off)
+- hide ratings in "REVIEWS YOU LIKED" on film page
+- defaults search films
+- wide release date when hovering on year
+- go to film button (3 dots when hovering on movie from "NEW FROM FRIENDS")
+- move "LATEST NEWS" under "POPULAR LISTS" on main page
+- convert all ratings to 5 or 10 point scale option
+- hide rating on reviews page and hide ratings of liked reviews there - https://letterboxd.com/urpalbeth/film/the-watermelon-woman/1/
+- hide show supported html, reviews & list description editor enchancer (adding supported html with one click - <a href=""> <strong> <em> <b> <i> <blockquote>)
+- remove from filters:
+    - show custom posters
+    - logged
+    - rewatched
+    - reviewed
+    - hide documentaries
+- display the cast member's image when hovering over their name
+- additional film ratings from other sites:
+    - imdb
+    - rotten tomatoes
+    - metacritic
+    - myanimelist
+- show other rating setting for each site
+- awards on people pages:
+    - oscar wins & nominees
+    - bafta wins & nominees
+    - golden globe wins & nominees
+- additional top film rankings next to letterboxd top250: (maybe in details only or also)
+    AWARDS: (show awards on click)
+        - oscar wins & nominees
+        - bafta wins & nominees
+        - golden globe wins & nominees
+    LISTS: (letterboxd list on click)
+    - "They Shoot Pictures, Don't They?" top 1000 
+    - "BFI Sight and Sound" top 250
+- additional "More details at" on people pages:
+    - imdb
+- show wide release date when hovering on year (maybe on top of releases too)
+- in the place of "FANS":
+    - fans
+    - ratings count
+    - both side by side
+- preview for html formatter
+- change white background for search bar at the top

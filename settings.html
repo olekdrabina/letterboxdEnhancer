@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        @font-face {
+            font-family: 'MainFont';
+            src: url(assets/mainFont.ttf);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: MainFont;
+        }
+        body {
+            background-color: #485565;
+            width: 100%;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+        .header img {
+            width: 50px;
+            margin-right: 10px;
+        }
+        .header h1 {
+            color: white;
+            font-size: 35px;
+        }
+
+        /* settings */
+        .on {
+            margin-left: 16px;
+            background-color: #00e054;
+        }
+        .off {
+            margin-left: 2px;
+            background-color: #ff8000;
+        }
+
+        hr {
+            margin: 0px 5px 10px 5px;
+        }
+        .hrDiv {
+            display: flex;
+        }
+        .hrLabel {
+            margin: 0 0 1px 5px;
+            color: white;
+        }
+        
+        .setting {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+        .setting .name {
+            font-size: 18px;
+            color: white;
+            white-space: nowrap;
+        }
+        .switch {
+            margin-right: 10px;
+        }
+        .switchBackground {
+            width: 30px;
+            height: 15px;
+            border-radius: 15px;
+            background-color: #202830;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .switchDot {
+            width: 12px;
+            aspect-ratio: 1;
+            border-radius: 100%;
+        }
+
+        /* other */
+        .button {
+            padding: 7px 10px;
+            background-color: #567;
+            color: #c8d4e0;
+            border-radius: 3px;
+            cursor: pointer;
+            width: min-content;
+            white-space: nowrap;
+            box-shadow: inset 0 1px rgba(255, 255, 255, .2);
+            margin: 5px;
+            font-weight: 800;
+        }
+        .button:hover {
+            color: white;
+            background-color: #677889;
+        }
+
+        .displayFlex {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img class="logo" src="assets/logo/128.png">
+        <h1>Settings</h1>
+    </div>
+    <div class="settings"></div>
+    <div class="displayFlex">
+        <!-- <div class="import button">IMPORT SETTINGS</div> -->
+        <!-- <div class="export button">EXPORT SETTINGS</div> -->
+        <div class="restoreDefault button">RESTORE DEFAULT</div>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
