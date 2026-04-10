@@ -1,5 +1,7 @@
+IMPORTANT:
 - release in chrome web store
 - firefox support
+- make settings apply immediately
 
 - hide (all default off): 
     - reviews you liked
@@ -7,6 +9,7 @@
     - runtime
 - hide/show rating shortcut
 - display likes, films per day/week/month on profile pages
+- split banner ads and feature ads into 2 settings (include activity filter ad to adblock)
 - filter by country & language & runtime
 - split each page to separate file
 - cool progress bar as background for list names
@@ -57,9 +60,8 @@
     - ratings count
     - both side by side
 - preview for html formatter
-- change white background for search bar at the top
 
-INSPIRATIONS:
+LOOSE INSPIRATIONS:
 - list of shortcuts somewhere then https://chromewebstore.google.com/detail/letterboxd-shortcuts/lpopedcebfdkhelkoiakllmilggjcope
 - not icon adder but look for sites from this https://www.reddit.com/r/Letterboxd/comments/1oltnwm/i_created_betterboxd_letterboxd_icon_adder_a/
 - https://chromewebstore.google.com/detail/friends-average-for-lette/fffalfghjklopnhmkpdadlfopnnbnabg
@@ -69,3 +71,4 @@ INSPIRATIONS:
 - https://chromewebstore.google.com/detail/sbl-slightly-better-lette/bcedenoajjhbehkchgopednpcgggjlni
 - https://chromewebstore.google.com/detail/letterboxd-search-autocom/dklhllepnaoaanbkmjmimceipbgblkjb
 - https://chromewebstore.google.com/detail/enhancer-for-letterboxd/abkbjnimmidipmhhhlcnikkifjpdjdpc
+- https://github.com/duncanlang/Letterboxd-Extras/issues

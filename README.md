@@ -8,9 +8,9 @@ Enhances the Letterboxd site with a focus on spoiler-free browsing by hiding fil
 ### <ins>Options not enabled by default are marked in "_italics_"</ins>
 
 ### Settings
-- **Settings page where every feature is available for full customization**
+- **Settings page with customization options for most features**
+- Changes require a refresh to take effect
 - Export & import settings
-- Independent customization for unreleased movies
 ### Film Page
 - Button for toggling visibility of statistics:
   - Rating
@@ -69,6 +69,6 @@ If you encounter bugs, have ideas for improvements, or want new features, you ca
 
 <img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/shown.png" width="500">
 
-### Budget & Box Office Shown
+### Budget & Box Office
 
 <img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/details.png" width="500">

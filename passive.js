@@ -489,11 +489,31 @@ chrome.storage.local.get(null, (settings) => {
                 }
             }
 
+            // prettier search input
+            if (settings.darkmodeSearchBars) {
+                const selectors = [
+                    "#search-q",
+                    "#frm-film-search",
+                    "#frm-watchlist-autocomplete"
+                ]
+
+                selectors.forEach(selector => {
+                    const input = document.querySelector(selector)
+                    if (input) {
+                        input.style.background = "#2C3440"
+                        input.style.color = "white"
+                    }
+                })
+            }
+        }
+        other()
+
+        function notInSettings() {
             // people pages consistent border-radius
             peopleShare = document.querySelector("#userpanel > ul > li")
             if (peopleShare) peopleShare.style.borderRadius = "3px"
         }
-        other()
+        notInSettings()
 
         // === remove selectors ===
         selectorsToRemove.forEach(selector => {

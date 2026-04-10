@@ -51,11 +51,12 @@ const settings = [
     {name: "Hide top500 from popular films", state: true, key: "hidePopularFilmsTop500Films"},
     {name: "Hide ratings from popular reviews", state: true, key: "hidePopularReviewsFilms"},
     {content: "OTHER"},
+    {name: "Ad block", state: true, key: "adblock"},
     {name: "Review formatting buttons", state: true, key: "reviewFormattingButtons"},
     {name: "Review formatting shortcuts", state: true, key: "reviewFormattingShortcuts"},
-    {name: "Ad block", state: true, key: "adblock"},
     {name: "Wider reviews page", state: true, key: "reviewsPageWider"},
     {name: "Wider network page", state: true, key: "networkPageWider"},
+    {name: "Darkmode search bars", state: true, key: "darkmodeSearchBars"},
     {content: " "}
 ]
 
