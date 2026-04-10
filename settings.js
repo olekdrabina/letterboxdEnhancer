@@ -14,13 +14,13 @@ async function loadSetting(key, defaultValue) {
 // settings list
 const settings = [
     {name: "<b>Extension Toggle</b>", key: "extensionState", special: "masterSwitch"},
-    {content: "SHOW/HIDE RATING"},
+    {content: "SHOW/HIDE STATISTICS"},
     {name: "Show/hide button", state: true, key: "showHideButton"},
     {name: "Show/hide button for unreleased", state: false, key: "showHideButtonUnreleased"},
     {name: "All below for unreleased", state: false, key: "hideUnreleased"},
     {name: "Hide rating", state: true, key: "hideRating"},
     {name: "Hide watches", state: false, key: "hideWatches"},
-    {name: "Hide list appears", state: false, key: "hideListAppears"},
+    {name: "Hide list ", state: false, key: "hideListAppears"},
     {name: "Hide likes", state: true, key: "hideLikes"},
     {name: "Hide top500", state: true, key: "hideTop500"},
     {name: "Hide friends ratings", state: true, key: "hideFriendsRatings"},

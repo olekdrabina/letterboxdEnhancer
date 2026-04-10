@@ -1,25 +1,51 @@
-# Letterboxd Enchancer
-Enhances the Letterboxd site with a range of useful quality-of-life improvements for a cleaner, more focused experience
+# Letterboxd Enhancer
+Enhances the Letterboxd site with a focus on spoiler-free browsing by hiding film-related statistics (ratings, likes and other activity), along with a range of quality-of-life improvements for a cleaner experience
 
 - This extension has not been tested on Pro or Patron accounts
-- Firefox is not currently supported
+- Firefox is not currently supported (but i am working on it)
 
 ## Features
-- **Settings page to customize your extension, making all features optional**
-- Film page customizations:
-  - Adds a show/hide button for ratings, watches, list appearances, likes, Top 250 crown, friends’ ratings and reviews, popular/recent reviews, and more
-  - Hides “Where to watch” section when not streaming
-  - Hides news and “Mentioned By” sectionsliked
-- Other improvements:
-  - Blocks ads
-  - Expands reviews and network pages for better readability
-  - Ensures consistent border-radius styling on people pages
+### <ins>Options not enabled by default are marked in "_italics_"</ins>
+
+### Settings
+- **Settings page where every feature is available for full customization**
+- Export & import settings
+- Independent customization for unreleased movies
+### Film Page
+- Button for toggling visibility of statistics:
+  - Rating
+  - _Watches & list appearances_
+  - Likes & top 500 crown
+  - Friends ratings and reviews
+  - Popular and recent reviews
+  - Popular lists & lists you liked
+  - _Your lists & similar films_
+- Additional options:
+  - Line break after film title
+  - MPA rating
+  - Box office & budget
+  - Friendly runtime formatting
+  - Wiki & mojo buttons
+  - _Hide the “Where to watch” section when no streaming is available_
+  - Hide news section
+  - Hide “Mentioned By” section
+### Home Page
+- Hide ratings from popular reviews (can be shown on click)
+### Films Page
+- Hide statistics in popular films this week:
+  - _Watches & list appearances_
+  - Likes & top 500 crown
+- Hide ratings from popular reviews (can be shown on click)
+### Other Features
+- Built-in ad block
+- UI consistency improvements
+- Review HTML formatting toolbar with shortcuts
 
 ## Installation
 1. Clone this repository or download the ZIP file and extract it
 2. Open `chrome://extensions/`  
 3. Toggle the “Developer mode” switch at the top right  
-4. Click “Load unpacked” and select the folder containing the extension files  
+4. Click “Load unpacked” and select the the extension folder  
 ### Notes
 - This is a **user script / local extension**, so it may need to be reloaded after browser updates
 - Make sure you allow the extension to run on `letterboxd.com`
@@ -27,18 +53,18 @@ Enhances the Letterboxd site with a range of useful quality-of-life improvements
 ## Issues & Suggestions
 If you encounter bugs, have ideas for improvements, or want new features, you can help:
 - **Report issues:** Use the [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page on GitHub to report bugs or unexpected behavior
-- **Suggest features:** Submit feature requests or suggestions through the same [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page
+- **Suggest features (Make sure to check [todo.txt](https://github.com/olekdrabina/letterboxdEnchancer/blob/main/todo.txt) first):** Submit feature requests or suggestions through the same [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page
 - **Contribute:** Fork the repository, make changes, and submit a pull request
 
-## Preview
+## Preview (1.1.0)
 ### Settings Page
 
-<img src="https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/settings_page.png" width="300">
+<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/settings_page.png" width="300">
 
-### Rating Hidden
+### Statistics Hidden
 
-<img src="https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_hidden.png" width="500">
+<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/statistics_hidden.png" width="500">
 
-### Rating Shown
+### Statistics Shown
 
-<img src="https://github.com/olekdrabina/letterboxdEnchaner/blob/main/assets/rating_shown.png" width="500">
+<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/statistics_shown.png" width="500">

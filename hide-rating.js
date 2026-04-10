@@ -1,6 +1,8 @@
 if (window.location.href.startsWith("https://letterboxd.com/film/")) {
-    chrome.storage.local.get(null, (data) => {
-        if (data.extensionState) {
+    let isReleased = true
+    if (document.querySelector("#film-page-wrapper > div.col-17 > section.film-reviews.reviews-hidden.section.-clear")) isReleased = false
+    chrome.storage.local.get(null, (settings) => {
+        if (settings.extensionState) {
             // hide while loading
             let loading = true
             const loadingSelectors = [
@@ -25,60 +27,67 @@ if (window.location.href.startsWith("https://letterboxd.com/film/")) {
             const hideSelectors = []
             const hideElements = []
 
-            if (data.hideRating) {
-                hideSelectors.push("#film-page-wrapper > div.col-17 > aside > section.section.ratings-histogram-chart")
-            }
-            if (data.hideWatches) {
-                hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-watches")
-            }
-            if (data.hideListAppears) {
-                hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-lists")
-            }
-            if (data.hideLikes) {
-                hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-likes")
-            }
-            if (data.hideTop250) {
-                hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-top250")
+            if (settings.hideUnreleased || isReleased) {
+                if (settings.hideRating) {
+                    hideSelectors.push("#film-page-wrapper > div.col-17 > aside > section.section.ratings-histogram-chart")
+                }
+                if (settings.hideWatches) {
+                    hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-watches")
+                }
+                if (settings.hideListAppears) {
+                    hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-lists")
+                }
+                if (settings.hideLikes) {
+                    hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-likes")
+                }
+                if (settings.hideTop500) {
+                    hideSelectors.push("#js-poster-col > section.poster-list.-p230.-single.no-hover.el.col > div.production-statistic-list > div.production-statistic.-topFilms")
+                }
+
+                if (settings.hideFriendsRatings) {
+                    hideSelectors.push("#film-page-wrapper > div.col-17 > section.section.activity-from-friends.-clear.-friends-watched.-no-friends-want-to-watch")
+                }
+                if (settings.hideFriendsReviews) {
+                    hideSelectors.push("#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-popular-friend-reviews")
+                }
+                if (settings.hidePopularReviews) {
+                    hideSelectors.push("#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-popular-reviews")
+                }
+                if (settings.hideRecentReviews) {
+                    hideSelectors.push("#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-recent-reviews")
+                }
+
+                if (settings.hideSimilarFilms) {
+                    hideSelectors.push("#film-page-wrapper > div.col-17 > section.section.related-films.-clear")
+                }
+
+                if (settings.hidePopularLists) {
+                    hideSelectors.push("#production-popular-lists")
+                }
+                if (settings.hideYourLists) {
+                    document.querySelectorAll("#lists > h2 > a").forEach(el => {
+                        if (el.innerHTML == "Your Lists") {
+                            hideElements.push(el.parentElement.parentElement)
+                        }
+                    })
+                }
+                if (settings.hideListsYouLiked) {
+                    document.querySelectorAll("#lists > h2 > a").forEach(el => {
+                        if (el.innerHTML == "Lists you liked") {
+                            hideElements.push(el.parentElement.parentElement)
+                        }
+                    })
+                }
             }
 
-            if (data.hideFriendsRatings) {
-                hideSelectors.push("#film-page-wrapper > div.col-17 > section.section.activity-from-friends.-clear.-friends-watched.-no-friends-want-to-watch")
+            // hide/show statistics
+            let buttonExist
+            if (!isReleased) {
+                buttonExist = settings.showHideButtonUnreleased
+            } else if (isReleased) {
+                buttonExist = settings.generateShowHideButton
             }
-            if (data.hideFriendsReviews) {
-                hideSelectors.push("#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-popular-friend-reviews")
-            }
-            if (data.hidePopularReviews) {
-                hideSelectors.push("#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-popular-reviews")
-            }
-            if (data.hideRecentReviews) {
-                hideSelectors.push("#film-page-wrapper > div.col-17 > section.film-recent-reviews.-clear > section.film-reviews.section.js-recent-reviews")
-            }
-
-            if (data.hideSimilarFilms) {
-                hideSelectors.push("#film-page-wrapper > div.col-17 > section.section.related-films.-clear")
-            }
-
-            if (data.hidePopularLists) {
-                hideSelectors.push("#production-popular-lists")
-            }
-            if (data.hideYourLists) {
-                document.querySelectorAll("#lists > h2 > a").forEach(el => {
-                    if (el.innerHTML == "Your Lists") {
-                        hideElements.push(el.parentElement.parentElement)
-                    }
-                })
-            }
-            if (data.hideListsYouLiked) {
-                document.querySelectorAll("#lists > h2 > a").forEach(el => {
-                    if (el.innerHTML == "Lists you liked") {
-                        hideElements.push(el.parentElement.parentElement)
-                    }
-                })
-            }
-
-            // hide/show rating
-            let buttonExist = data.generateShowHideButton
-            function hideRatings() {
+            function hideStatistics() {
                 if (buttonExist) {
                     const li = document.createElement("li")
                     document.querySelector("#userpanel > ul").appendChild(li)
@@ -91,12 +100,12 @@ if (window.location.href.startsWith("https://letterboxd.com/film/")) {
                     if (hidden) {
                         displayState = "none"
                         if (buttonExist) {
-                            document.querySelector(".toggleBtn").textContent = "Show rating"
+                            document.querySelector(".toggleBtn").textContent = "Show statistics"
                         }
                     } else if (!hidden) {
                         displayState = ""
                         if (buttonExist) {
-                            document.querySelector(".toggleBtn").textContent = "Hide rating"
+                            document.querySelector(".toggleBtn").textContent = "Hide statistics"
                         }
                     }
                     hideSelectors.forEach(sel => { 
@@ -144,7 +153,7 @@ if (window.location.href.startsWith("https://letterboxd.com/film/")) {
                     ]
                     let watched = checkSelectors.some(isWatched)
                     const ratingEl = document.querySelector("#rateit-range-2")
-                    if (ratingEl && ratingEl.getAttribute("aria-valuenow") !== "0") {
+                    if (ratingEl && ratingEl.getAttribute("aria-valuenow") != "0") {
                         watched = true
                     }
 
@@ -173,7 +182,7 @@ if (window.location.href.startsWith("https://letterboxd.com/film/")) {
                 checkWatched()
             }
             setTimeout(() => {
-                hideRatings()
+                hideStatistics()
             }, 500)
 
             // initial run

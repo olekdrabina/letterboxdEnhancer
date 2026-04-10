@@ -35,9 +35,8 @@ function createTooltip(content, parent) {
 
 // main logic
 chrome.storage.local.get(null, (settings) => {
-    const isReleasedHtml = document.querySelector("#film-page-wrapper > div.col-17 > section.film-reviews.reviews-hidden.section.-clear")
     let isReleased = true
-    if (isReleasedHtml) isReleased = false
+    if (document.querySelector("#film-page-wrapper > div.col-17 > section.film-reviews.reviews-hidden.section.-clear")) isReleased = false
     if (settings.extensionState) {
         const selectorsToRemove = []
         // === FILM PAGE ===
@@ -66,28 +65,30 @@ chrome.storage.local.get(null, (settings) => {
             
             // runtime
             const footer = document.querySelector("#film-page-wrapper > div.col-17 > section.section.col-10.col-main > p")
-            const runtimeMinutesNum = parseInt(footer.innerText.match(/\d+/)[0], 10)
-            const runtimeMins = `${runtimeMinutesNum} mins`
-            const runtimeHours = runtimeMinutesNum >= 60 ? `${Math.floor(runtimeMinutesNum / 60)} hrs ${runtimeMinutesNum % 60} mins`: runtimeMins
+            if (footer.textContent.includes("mins")) {
+                const runtimeMinutesNum = parseInt(footer.innerText.match(/\d+/)[0], 10)
+                const runtimeMins = `${runtimeMinutesNum} mins`
+                const runtimeHours = runtimeMinutesNum >= 60 ? `${Math.floor(runtimeMinutesNum / 60)} hrs ${runtimeMinutesNum % 60} mins`: runtimeMins
+                
+                function createRuntimeTooltip() {
+                    const [display, tooltip] = settings.friendlyRuntime ? [runtimeHours, runtimeMins] : [runtimeMins, runtimeHours]
+                    for (const node of footer.childNodes) {
+                        if (node.nodeType != Node.TEXT_NODE || !node.textContent.trim()) continue
 
-            function createRuntimeTooltip() {
-                const [display, tooltip] = settings.friendlyRuntime ? [runtimeHours, runtimeMins] : [runtimeMins, runtimeHours]
-                for (const node of footer.childNodes) {
-                    if (node.nodeType != Node.TEXT_NODE || !node.textContent.trim()) continue
+                        const match = node.textContent.match(/\d+\s*mins?/)
+                        if (!match) break
 
-                    const match = node.textContent.match(/\d+\s*mins?/)
-                    if (!match) break
+                        const span = document.createElement("span")
+                        span.textContent = display + " \u00A0 "
+                        if (runtimeMinutesNum > 60) createTooltip(tooltip, span)
 
-                    const span = document.createElement("span")
-                    span.textContent = display + " \u00A0 "
-                    if (runtimeMinutesNum > 60) createTooltip(tooltip, span)
-
-                    node.textContent = node.textContent.replace(match[0], "").trim() + " "
-                    footer.insertBefore(span, footer.firstChild)
-                    break
+                        node.textContent = node.textContent.replace(match[0], "").trim() + " "
+                        footer.insertBefore(span, footer.firstChild)
+                        break
+                    }
                 }
+                if (footer.textContent.includes("mins")) createRuntimeTooltip()
             }
-            if (footer.textContent.includes("mins")) createRuntimeTooltip()
 
             // Wikidata
             function getWikidata(letterboxdId, imdbId, tmdbId) {
@@ -150,6 +151,7 @@ chrome.storage.local.get(null, (settings) => {
                 const text = await res.text()
                 const data = JSON.parse(text)
 
+                console.log("letterboxd-enchancer wikidata:")
                 console.log(data.results.bindings[0])
                 if (data.results.bindings[0]) {
                     // budget & box office
@@ -332,7 +334,7 @@ chrome.storage.local.get(null, (settings) => {
 
                 document.querySelectorAll(query).forEach(container => {
                     const rating = container.querySelector("span.inline-rating")
-                     const like = container.querySelector("span.inline-symbol:not(.inline-rating)")
+                    const like = container.querySelector("span.inline-symbol:not(.inline-rating)")
 
                     if (container.dataset.initialized) return
                     if (window.location.href == "https://letterboxd.com/") container.style.display = "flex"

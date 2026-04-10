@@ -1,41 +1,14 @@
-<<<<<<< HEAD
 - release in chrome web store
 - firefox support
-
-changes:
-- hiding rating & lists & likes & top500 in popular films this week on films page
-- hiding rating in popular reviews this week on films & home page
-- hide watches & list appears on film page option
-- hide news & mentioned by option
-- hide "where to watch" when not streaming option
-- import & export settings
-- wiki & mojo button at more at
-- budget & box office at details (button for both?)
-- br after movie title on film page
-- mpa rating (hover, and clickable)
-- option to hide things on unreleased movies too
-- show friendly hours option (then minutes in tooltip else friendly in tooltip)
-- html formatting (option to turn off shortcuts (hide tooltip then too), option to turn off buttons)
-- removed option to set consistent border radius
-!!!WRITE ALL THIS TO README AND SETTINGS!!!
-every feature is avaible in settings for full customization
-
+- hide/show rating shortcut
 - display likes, films per day/week/month on profile pages
 - filter by country & language & runtime
 - split each page to separate file
-- not icon adder but look for sites from this https://www.reddit.com/r/Letterboxd/comments/1oltnwm/i_created_betterboxd_letterboxd_icon_adder_a/
-- https://chromewebstore.google.com/detail/friends-average-for-lette/fffalfghjklopnhmkpdadlfopnnbnabg
-- https://chromewebstore.google.com/detail/letterboxd-film-list-filt/mhibfhbacdpnhgkokldppdnckdahnbhh
-- https://chromewebstore.google.com/detail/find-in-letterboxd/peelfmpndjghimfolkdbflpnekngeioh
-- https://chromewebstore.google.com/detail/dogboxd-trigger-warnings/jjaaphmnakildnlgookngnamekoalajm
-- https://chromewebstore.google.com/detail/sbl-slightly-better-lette/bcedenoajjhbehkchgopednpcgggjlni
-- https://chromewebstore.google.com/detail/letterboxd-search-autocom/dklhllepnaoaanbkmjmimceipbgblkjb
-- https://chromewebstore.google.com/detail/enhancer-for-letterboxd/abkbjnimmidipmhhhlcnikkifjpdjdpc
-- info button in settings (for certain settings)
 - cool progress bar as background for list names
 - automatically show rating for popular films this week and popular reviews when movie is watched
 - hide tv shows & short films on default
 - more than letterboxd top500
+- maybe info button in settings (for certain settings)
 - hide ratings in "NEW FROM FRIENDS" (auto show when movie watched)
 - something custom on film page for some movies (default off)
 - hide ratings in "REVIEWS YOU LIKED" on film page
@@ -45,32 +18,6 @@ every feature is avaible in settings for full customization
 - move "LATEST NEWS" under "POPULAR LISTS" on main page
 - convert all ratings to 5 or 10 point scale option
 - hide rating on reviews page and hide ratings of liked reviews there - https://letterboxd.com/urpalbeth/film/the-watermelon-woman/1/
-=======
-changes:
-- split settings by page
-- hidePopularFilmsWeek watches & likes & lists
-- hidePopularReviewsRating on home & films page
-- faster hide rating loading
-
-- show popular reviews when watched
-
-- import export
-- release in chrome web store
-- firefox support
-- hide tv shows & short films on default
-- more than letterboxd top250
-- hide likes & top250 on "POPULAR FILMS THIS WEEK"
-- hide ratings in "POPULAR REVIES THIS WEEK" & "NEW FROM FRIENDS"
-- something custom on film page for some movies (default off)
-- mpa rating
-- hide ratings in "REVIEWS YOU LIKED" on film page
-- defaults search films
-- go to film butotn (3 dots when hovering on movie from "NEW FROM FRIENDS")
-- move "LATEST NEWS" under "POPULAR LISTS" on main pagegit
-- convert all ratings to 5 or 10 point scale
-- hide rating on reviews page and hide ratings of liked reviews there
->>>>>>> origin/main
-- hide show supported html, reviews & list description editor enchancer (adding supported html with one click - <a href=""> <strong> <em> <b> <i> <blockquote>)
 - remove from filters:
     - show custom posters
     - logged
@@ -83,48 +30,37 @@ changes:
     - rotten tomatoes
     - metacritic
     - myanimelist
-<<<<<<< HEAD
 - show other rating setting for each site
-=======
-- show more/less ratings button for additional film ratings
->>>>>>> origin/main
 - awards on people pages:
     - oscar wins & nominees
     - bafta wins & nominees
     - golden globe wins & nominees
-<<<<<<< HEAD
 - additional top film rankings next to letterboxd top250: (maybe in details only or also)
-=======
-- additional top film rankings next to letterboxd top250:
->>>>>>> origin/main
     AWARDS: (show awards on click)
         - oscar wins & nominees
         - bafta wins & nominees
         - golden globe wins & nominees
     LISTS: (letterboxd list on click)
-    - "They Shoot Pictures, Don't They?" top 1000 
-    - "BFI Sight and Sound" top 250
-<<<<<<< HEAD
+        - "They Shoot Pictures, Don't They?" top 1000
+        - "BFI Sight and Sound" top 250
 - additional "More details at" on people pages:
     - imdb
+    - wiki
 - show wide release date when hovering on year (maybe on top of releases too)
-=======
-- additional "More at" on film page:
-    - wiki
-- additional "More details at" on people pages:
-    - imdb
-    - wiki
-- show wide release date on top in releases and when hovering on year
-- budget & box office in details tab
-- hours and minutes in modal on duration hover
->>>>>>> origin/main
 - in the place of "FANS":
     - fans
     - ratings count
     - both side by side
-<<<<<<< HEAD
 - preview for html formatter
 - change white background for search bar at the top
-=======
-- import/export settings
->>>>>>> origin/main
+
+INSPIRATIONS:
+- list of shortcuts somewhere then https://chromewebstore.google.com/detail/letterboxd-shortcuts/lpopedcebfdkhelkoiakllmilggjcope
+- not icon adder but look for sites from this https://www.reddit.com/r/Letterboxd/comments/1oltnwm/i_created_betterboxd_letterboxd_icon_adder_a/
+- https://chromewebstore.google.com/detail/friends-average-for-lette/fffalfghjklopnhmkpdadlfopnnbnabg
+- https://chromewebstore.google.com/detail/letterboxd-film-list-filt/mhibfhbacdpnhgkokldppdnckdahnbhh
+- https://chromewebstore.google.com/detail/find-in-letterboxd/peelfmpndjghimfolkdbflpnekngeioh
+- https://chromewebstore.google.com/detail/dogboxd-trigger-warnings/jjaaphmnakildnlgookngnamekoalajm
+- https://chromewebstore.google.com/detail/sbl-slightly-better-lette/bcedenoajjhbehkchgopednpcgggjlni
+- https://chromewebstore.google.com/detail/letterboxd-search-autocom/dklhllepnaoaanbkmjmimceipbgblkjb
+- https://chromewebstore.google.com/detail/enhancer-for-letterboxd/abkbjnimmidipmhhhlcnikkifjpdjdpc
