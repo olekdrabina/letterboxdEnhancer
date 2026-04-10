@@ -1,5 +1,10 @@
 - release in chrome web store
 - firefox support
+
+- hide (all default off): 
+    - reviews you liked
+    - hide related films
+    - runtime
 - hide/show rating shortcut
 - display likes, films per day/week/month on profile pages
 - filter by country & language & runtime

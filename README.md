@@ -24,7 +24,7 @@ Enhances the Letterboxd site with a focus on spoiler-free browsing by hiding fil
   - Line break after film title
   - MPA rating
   - Box office & budget
-  - Friendly runtime formatting
+  - Choose runtime formatting (with other format on hover)
   - Wiki & mojo buttons
   - _Hide the “Where to watch” section when no streaming is available_
   - Hide news section
@@ -53,18 +53,22 @@ Enhances the Letterboxd site with a focus on spoiler-free browsing by hiding fil
 ## Issues & Suggestions
 If you encounter bugs, have ideas for improvements, or want new features, you can help:
 - **Report issues:** Use the [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page on GitHub to report bugs or unexpected behavior
-- **Suggest features (Make sure to check [todo.txt](https://github.com/olekdrabina/letterboxdEnchancer/blob/main/todo.txt) first):** Submit feature requests or suggestions through the same [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page
+- **Suggest features (make sure to check [todo.txt](https://github.com/olekdrabina/letterboxdEnchancer/blob/main/todo.txt) first):** Submit feature requests or suggestions through the same [Issues](https://github.com/olekdrabina/letterboxdEnchaner/issues) page
 - **Contribute:** Fork the repository, make changes, and submit a pull request
 
-## Preview (1.1.0)
+## Preview (1.2.1)
 ### Settings Page
 
-<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/settings_page.png" width="300">
+<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/settings.png" width="300">
 
 ### Statistics Hidden
 
-<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/statistics_hidden.png" width="500">
+<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/hidden.png" width="500">
 
 ### Statistics Shown
 
-<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/statistics_shown.png" width="500">
+<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/shown.png" width="500">
+
+### Budget & Box Office Shown
+
+<img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/details.png" width="500">
