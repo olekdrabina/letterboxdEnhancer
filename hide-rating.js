@@ -1,4 +1,4 @@
-if (window.location.href.startsWith("https://letterboxd.com/film/")) {
+if (window.location.href.startsWith("https://letterboxd.com/film/") && !window.location.href.endsWith("/activity/")) {
     let isReleased = true
     if (document.querySelector("#film-page-wrapper > div.col-17 > section.film-reviews.reviews-hidden.section.-clear")) isReleased = false
     chrome.storage.local.get(null, (settings) => {

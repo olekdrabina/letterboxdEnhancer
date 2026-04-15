@@ -41,7 +41,7 @@ chrome.storage.local.get(null, (settings) => {
     if (settings.extensionState) {
         const selectorsToRemove = []
         // === FILM PAGE ===
-        if (window.location.href.startsWith("https://letterboxd.com/film/")) {
+        if (window.location.href.startsWith("https://letterboxd.com/film/") && !window.location.href.endsWith("/activity/")) {
             if (settings.hideJustWatch) {
                 // where to watch – remove the parent if not streaming
                 const justWatchObserver = new MutationObserver((_, observer) => {
@@ -144,8 +144,10 @@ chrome.storage.local.get(null, (settings) => {
                 }
             }
             const movieSlug = document.querySelector("#poster-modal > div > div > div.modal-body > div").dataset.itemSlug
-            const tmdbID = document.querySelector("#film-page-wrapper > div.col-17 > section.section.col-10.col-main > p > a:nth-of-type(2)").href.split("/")[4]
-            const imdbID = document.querySelector("#film-page-wrapper > div.col-17 > section.section.col-10.col-main > p > a:nth-of-type(1)").href.split("/")[4]
+            const imdbEl = document.querySelector('a[href*="imdb.com/title/"]')
+            const tmdbEl = document.querySelector('a[href*="themoviedb.org/movie/"]')
+            const imdbID = imdbEl?.href?.split("/")[4]
+            const tmdbID = tmdbEl?.href?.split("/")[4]
             async function useWikidata() {
                 const req = getWikidata(movieSlug, imdbID, tmdbID)
                 const res = await fetch(req.url, req.options)
@@ -319,6 +321,58 @@ chrome.storage.local.get(null, (settings) => {
                     reviewWindow.value = text.slice(0, start) + before + after + text.slice(end)
                     reviewWindow.selectionStart = reviewWindow.selectionEnd = start + before.length
                 }
+            }
+
+            // wide release date
+            const priorities = [
+                "Theatrical",
+                "Digital",
+                "TV",
+                "Theatrical limited",
+                "Premiere",
+                "Physical"
+            ]
+            const titles = document.querySelectorAll(".release-table-title")
+            let firstReleaseDateFound = false
+            let wideReleaseDate
+            for (const priority of priorities) {
+                for (const el of titles) {
+                    if (el.textContent.includes(priority)) {
+                        wideReleaseDate = el.nextElementSibling.firstElementChild.firstElementChild.firstElementChild.innerText
+                        firstReleaseDateFound = true
+                    }
+                }
+                if (firstReleaseDateFound) break
+            }
+
+            const wideTitle = Object.assign(document.createElement("h3"), {className: "release-table-title", innerText: "Wide release date"})
+            const wideTable = document.createElement("div")
+            wideTable.className = "release-table -bydate"
+            wideTable.innerHTML = `
+                <div class="listitem">
+                    <div class="cell"><h5 class="date">${wideReleaseDate}</h5></div>
+                    <div class="cell countries">
+                        <ul class="release-country-list">
+                            <li class="listitem">
+                                <span class="release-country -has-no-link -has-no-certification -has-no-note">
+                                    <span class="flag -has-flag"><img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/world_flag.png" alt="Flag for World"></span>
+                                    <span class="details"><span class="name">World</span></span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            `
+            const header = document.querySelector("#tab-releases > section > header")
+            header.after(wideTitle)
+            wideTitle.after(wideTable)
+
+            if (settings.yearHoverReleaseDate) {
+
+            }
+
+            if (settings.wideReleaseDate) {
+
             }
         }
 

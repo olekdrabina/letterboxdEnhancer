@@ -1,8 +1,14 @@
 IMPORTANT:
 - release in chrome web store
 - firefox support
+- wide release date when hovering on year (first release date from "theatrical")
 
+- hide reviews and likes and top500 on activity (https://letterboxd.com/film/the-wolf-of-wall-street/reviews/by/activity/)
+- darkmode reviews/editing list
+- hide box shadow on clicking dark mode inputs
+- formatting buttons in creating lists
 - hide/show rating shortcut
+- wide release date prorities drag & drop setting
 - display likes, films per day/week/month on profile pages
 - split banner ads and feature ads into 2 settings (include activity filter ad to adblock)
 - filter by country & language & runtime
@@ -16,7 +22,6 @@ IMPORTANT:
 - something custom on film page for some movies (default off)
 - hide ratings in "REVIEWS YOU LIKED" on film page
 - defaults search films
-- wide release date when hovering on year
 - go to film button (3 dots when hovering on movie from "NEW FROM FRIENDS")
 - move "LATEST NEWS" under "POPULAR LISTS" on main page
 - convert all ratings to 5 or 10 point scale option

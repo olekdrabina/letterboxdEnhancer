@@ -1,6 +1,5 @@
-maybe delete this file before new release or smth idk
-
-- darkmode search bars
-- hide related films option
-- fixed default settings not loading on extension install
-- fixed settings import & export 
+1.x.x
+- wide release date on year hover
+- wide release date in releases
+- fixed extension crushing when no imdb or tmdb
+- fixed extension not working on movie review activity page
