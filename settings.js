@@ -31,7 +31,7 @@ const settings = [
     {name: "Hide lists you liked", key: "hideListsYouLiked"},
     {content: "FILM PAGE"},
     {name: "Line break after film title", key: "filmTitleBr"},
-    {name: "Release date on year hover", key: "yearHoverReleaseDate"},
+    {name: "Wide release date on year hover", key: "yearHoverReleaseDate"},
     {name: "Mpa rating", key: "mpaRating"},
     {name: "Wide release date in releases", key: "wideReleaseDate"},
     {name: "Box office in details", key: "boxOffice"},

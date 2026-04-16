@@ -2,4 +2,4 @@
 - wide release date on year hover
 - wide release date in releases
 - fixed extension crushing when no imdb or tmdb
-- fixed extension not working on movie review activity page
+- fixed extension not working on movie activity page

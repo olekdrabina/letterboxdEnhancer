@@ -40,6 +40,7 @@ Enhances the Letterboxd site with a focus on spoiler-free browsing by hiding fil
 - Built-in ad block
 - UI consistency improvements
 - Review HTML formatting toolbar with shortcuts
+- Dark mode for light UI elements
 
 ## Installation
 1. Clone this repository or download the ZIP file and extract it

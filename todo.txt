@@ -1,8 +1,9 @@
 IMPORTANT:
 - release in chrome web store
 - firefox support
-- wide release date when hovering on year (first release date from "theatrical")
 
+- mark tv series as tv series
+- darker world flag
 - hide reviews and likes and top500 on activity (https://letterboxd.com/film/the-wolf-of-wall-street/reviews/by/activity/)
 - darkmode reviews/editing list
 - hide box shadow on clicking dark mode inputs

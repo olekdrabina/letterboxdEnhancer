@@ -41,7 +41,14 @@ chrome.storage.local.get(null, (settings) => {
     if (settings.extensionState) {
         const selectorsToRemove = []
         // === FILM PAGE ===
-        if (window.location.href.startsWith("https://letterboxd.com/film/") && !window.location.href.endsWith("/activity/")) {
+        if (
+            window.location.href.startsWith("https://letterboxd.com/film/") && 
+            !window.location.href.endsWith("/members/") &&
+            !window.location.href.endsWith("/fans/") &&
+            !window.location.href.endsWith("/likes/") &&
+            !window.location.href.endsWith("/reviews/") &&
+            !window.location.href.endsWith("/lists/")
+        ) {
             if (settings.hideJustWatch) {
                 // where to watch – remove the parent if not streaming
                 const justWatchObserver = new MutationObserver((_, observer) => {
@@ -324,55 +331,57 @@ chrome.storage.local.get(null, (settings) => {
             }
 
             // wide release date
-            const priorities = [
-                "Theatrical",
-                "Digital",
-                "TV",
-                "Theatrical limited",
-                "Premiere",
-                "Physical"
-            ]
-            const titles = document.querySelectorAll(".release-table-title")
-            let firstReleaseDateFound = false
-            let wideReleaseDate
-            for (const priority of priorities) {
-                for (const el of titles) {
-                    if (el.textContent.includes(priority)) {
-                        wideReleaseDate = el.nextElementSibling.firstElementChild.firstElementChild.firstElementChild.innerText
-                        firstReleaseDateFound = true
+            if (settings.yearHoverReleaseDate || settings.wideReleaseDate) {
+                const priorities = [
+                    "Theatrical",
+                    "Digital",
+                    "TV",
+                    "Theatrical limited",
+                    "Premiere",
+                    "Physical"
+                ]
+                const titles = document.querySelectorAll(".release-table-title")
+                let firstReleaseDateFound = false
+                let wideReleaseDate
+                for (const priority of priorities) {
+                    for (const el of titles) {
+                        if (el.textContent == priority) {
+                            wideReleaseDate = el.nextElementSibling.firstElementChild.firstElementChild.firstElementChild.innerText
+                            firstReleaseDateFound = true
+                        }
+                    }
+                    if (firstReleaseDateFound) break
+                }
+
+                if (wideReleaseDate != undefined) {
+                    if (settings.yearHoverReleaseDate) {
+                        createTooltip(wideReleaseDate, document.querySelector("#film-page-wrapper > div.col-17 > section.production-masthead.-shadowed.-productionscreen.-film > div > div > span.releasedate > a"))
+                    }
+
+                    if (settings.wideReleaseDate) {
+                        const wideTitle = Object.assign(document.createElement("h3"), {className: "release-table-title", innerText: "Wide release date"})
+                        const wideTable = document.createElement("div")
+                        wideTable.className = "release-table -bydate"
+                        wideTable.innerHTML = `
+                            <div class="listitem">
+                                <div class="cell"><h5 class="date">${wideReleaseDate}</h5></div>
+                                <div class="cell countries">
+                                    <ul class="release-country-list">
+                                        <li class="listitem">
+                                            <span class="release-country -has-no-link -has-no-certification -has-no-note">
+                                                <span class="flag -has-flag"><img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/world_flag.png?raw=true" alt="Flag for World"></span>
+                                                <span class="details"><span class="name">World</span></span>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `
+                        const header = document.querySelector("#tab-releases > section > header")
+                        header.after(wideTitle)
+                        wideTitle.after(wideTable)
                     }
                 }
-                if (firstReleaseDateFound) break
-            }
-
-            const wideTitle = Object.assign(document.createElement("h3"), {className: "release-table-title", innerText: "Wide release date"})
-            const wideTable = document.createElement("div")
-            wideTable.className = "release-table -bydate"
-            wideTable.innerHTML = `
-                <div class="listitem">
-                    <div class="cell"><h5 class="date">${wideReleaseDate}</h5></div>
-                    <div class="cell countries">
-                        <ul class="release-country-list">
-                            <li class="listitem">
-                                <span class="release-country -has-no-link -has-no-certification -has-no-note">
-                                    <span class="flag -has-flag"><img src="https://github.com/olekdrabina/letterboxdEnhancer/blob/main/assets/world_flag.png" alt="Flag for World"></span>
-                                    <span class="details"><span class="name">World</span></span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            `
-            const header = document.querySelector("#tab-releases > section > header")
-            header.after(wideTitle)
-            wideTitle.after(wideTable)
-
-            if (settings.yearHoverReleaseDate) {
-
-            }
-
-            if (settings.wideReleaseDate) {
-
             }
         }
 
