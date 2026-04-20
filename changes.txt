@@ -1,5 +1,7 @@
 1.x.x
 - wide release date on year hover
 - wide release date in releases
+- icons for tv series, short & feature length films
+- minor README changes & fixes
 - fixed extension crushing when no imdb or tmdb
 - fixed extension not working on movie activity page

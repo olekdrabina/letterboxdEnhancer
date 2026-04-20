@@ -1,8 +1,11 @@
 IMPORTANT:
 - release in chrome web store
 - firefox support
+- android test & support
+- microsoft edge support
+- mark tv series, short & and feature films all options
+- make extension work only where it needs not not: ERROR https://letterboxd.com/film/gullivers-travels-2010/similar/ & https://letterboxd.com/films/by/longest/
 
-- mark tv series as tv series
 - hide reviews and likes and top500 on activity (https://letterboxd.com/film/the-wolf-of-wall-street/reviews/by/activity/)
 - darkmode reviews/editing list
 - hide box shadow on clicking dark mode inputs
@@ -12,6 +15,9 @@ IMPORTANT:
 - display likes, films per day/week/month on profile pages
 - split banner ads and feature ads into 2 settings (include activity filter ad to adblock)
 - filter by country & language & runtime
+- watchlist picker/helper
+- some kind of easter egg like horror for each genre
+- arrows should move page next/back
 - split each page to separate file
 - cool progress bar as background for list names
 - automatically show rating for popular films this week and popular reviews when movie is watched
