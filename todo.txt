@@ -4,12 +4,22 @@ IMPORTANT:
 - android test & support
 - microsoft edge support
 
+- in the place of "FANS":
+    - fans
+    - ratings count
+    - both side by side
+- in the place of "LIKES":
+    - likes
+    - ratings count
+    - both side by side
+
+- turn of certain funtions if not logged in
 - hide reviews and likes and top500 on activity (https://letterboxd.com/film/the-wolf-of-wall-street/reviews/by/activity/)
 - darkmode reviews/editing list
 - show statistics immediately after rating
-- hide box shadow on clicking dark mode inputs
 - formatting buttons in creating lists
 - hide/show rating shortcut
+- friends rating should have cooldown on hover
 - wide release date prorities drag & drop setting
 - display likes, films per day/week/month on profile pages
 - split banner ads and feature ads into 2 settings (include activity filter ad to adblock)
@@ -21,9 +31,8 @@ IMPORTANT:
 - cool progress bar as background for list names
 - automatically show rating for popular films this week and popular reviews when movie is watched
 - hide tv shows & short films on default
-- fix icons on 2+ title wraps
-- pinning lists
-- more settings types
+- pinning lists (info in list description)
+- more settings.html types
 - more than letterboxd top500
 - maybe info button in settings (for certain settings)
 - hide ratings in "NEW FROM FRIENDS" (auto show when movie watched)
@@ -62,11 +71,6 @@ IMPORTANT:
 - additional "More details at" on people pages:
     - imdb
     - wiki
-- show wide release date when hovering on year (maybe on top of releases too)
-- in the place of "FANS":
-    - fans
-    - ratings count
-    - both side by side
 - preview for html formatter
 
 LOOSE INSPIRATIONS:

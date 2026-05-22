@@ -38,6 +38,7 @@ Enhances the Letterboxd site with a focus on spoiler-free browsing by hiding fil
   - Icons for marking TV series, short films & _feature-length films_
   - Wide release date shown in releases tab & when hovering on year
   - MPA rating
+  - Friends ratings graph
   - Box office & budget
   - Choose runtime formatting (with other format on hover)
   - Wiki & mojo buttons

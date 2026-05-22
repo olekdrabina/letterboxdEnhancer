@@ -22,6 +22,7 @@ export const defaults = {
     shortLengthIcon: true,
     tvSeriesIcon: true,
     yearHoverReleaseDate: true,
+    friendsRatingsGraph: true,
     mpaRating: true,
     wideReleaseDate: true,
     boxOffice: true,

@@ -1,8 +1,12 @@
 chrome.storage.local.get(null, (data) => console.log(data))
+
+// global variables
+const username = document.querySelector("#header > section > div:nth-child(2) > div > nav > ul > li.navitem.nav-account.js-nav-account > ul > li:nth-child(1) > a").textContent
+
 // global functions
 function createTooltip(content, parent) {
     const tooltip = document.createElement("div")
-    tooltip.className = "twipsy above"
+    tooltip.className = "twipsy fade above in"
 
     const tooltipArrow = document.createElement("div")
     tooltipArrow.className = "twipsy-arrow"
@@ -18,20 +22,28 @@ function createTooltip(content, parent) {
     tooltip.style.bottom = "calc(100% + 5px)"
     tooltip.style.left = "50%"
     tooltip.style.transform = "translateX(-50%)"
-    tooltip.style.visibility = "hidden"
+    tooltip.style.opacity = "0"
+    tooltip.style.pointerEvents = "none"
 
     parent.appendChild(tooltip)
     parent.style.position = "relative"
     parent.style.cursor = "pointer"
     parent.style.color = "var(--theme-body-content-color)"
     parent.addEventListener("mouseenter", () => {
-        tooltip.style.visibility = "visible"
+        tooltip.style.opacity = "100"
         parent.style.color = "white"
     })
     parent.addEventListener("mouseleave", () => {
-        tooltip.style.visibility = "hidden"
+        tooltip.style.opacity = "0"
         parent.style.color = ""
     })
+}
+
+function numberToStars(number) {
+    const fullStars = Math.floor(number)
+    const halfStar = number % 1 != 0
+
+    return "★".repeat(fullStars) + (halfStar ? "½" : "")
 }
 
 // main logic
@@ -41,8 +53,7 @@ chrome.storage.local.get(null, (settings) => {
     if (settings.extensionState) {
         const selectorsToRemove = []
         // === MOVIE PAGE ===
-        console.log(window.location.href.split("/"))
-        if (window.location.href.startsWith("https://letterboxd.com/film/") && window.location.href.split("/").length == 6) {
+        if (window.location.href.startsWith("https://letterboxd.com/film/") && window.location.href.split("/").length >= 6) {
             // hide where to watch
             if (settings.hideJustWatch) {
                 const justWatchObserver = new MutationObserver((_, observer) => {
@@ -181,7 +192,7 @@ chrome.storage.local.get(null, (settings) => {
                             container.prepend(heading)
                         }
                         
-                        const tabDetails = document.querySelector("#tab-details")
+                        const tabDetails = document.querySelector("#tab-panel-details")
                         const {budget, boxOffice} = data.results.bindings[0]
                         if (settings.boxOffice && boxOffice && boxOffice.value != null) prependLabeledValue(tabDetails, "BOX OFFICE", boxOffice.value)
                         if (settings.budget && budget) prependLabeledValue(tabDetails, "BUDGET", budget.value)
@@ -349,7 +360,7 @@ chrome.storage.local.get(null, (settings) => {
                 for (const priority of priorities) {
                     for (const el of titles) {
                         if (el.textContent == priority) {
-                            wideReleaseDate = el.nextElementSibling.firstElementChild.firstElementChild.firstElementChild.innerText
+                            wideReleaseDate = el.nextElementSibling.firstElementChild.firstElementChild.firstElementChild.innerHTML
                             firstReleaseDateFound = true
                         }
                     }
@@ -362,7 +373,9 @@ chrome.storage.local.get(null, (settings) => {
                     }
 
                     if (settings.wideReleaseDate) {
-                        const wideTitle = Object.assign(document.createElement("h3"), {className: "release-table-title", innerText: "Wide release date"})
+                        const wideTitle = document.createElement("h3")
+                        wideTitle.className = "release-table-title"
+                        wideTitle.innerText = "Wide release date"
                         const wideTable = document.createElement("div")
                         wideTable.className = "release-table -bydate"
                         wideTable.innerHTML = `
@@ -380,9 +393,9 @@ chrome.storage.local.get(null, (settings) => {
                                 </div>
                             </div>
                         `
-                        const header = document.querySelector("#tab-releases > section > header")
-                        header.after(wideTitle)
-                        wideTitle.after(wideTable)
+                        const header = document.querySelector("#tab-panel-releases-by-date")
+                        header.prepend(wideTable)
+                        header.prepend(wideTitle)
                     }
                 }
             }
@@ -397,20 +410,24 @@ chrome.storage.local.get(null, (settings) => {
                 }
 
                 const movieType = tmdbEl.href.split("/")[3]
-                const headline = document.querySelector("#film-page-wrapper > div.col-17 > section.production-masthead.-shadowed.-productionscreen.-film > div > h1")
                 function createIcon(src, tooltip) {
-                    headline.style.display = "inline-flex"
-                    headline.style.alignItems = "end"
+                    let existingSpan = document.querySelector("#film-page-wrapper > div.col-17 > section.production-masthead.-shadowed.-productionscreen.-film > div > h1 > span.name.js-widont.prettify")
+                    existingSpan.style.display = "inline-flex"
+                    existingSpan.style.alignItems = "center"
                     let span = document.createElement("span")
-                    span.style.marginRight = "6px"
-                    span.style.marginBottom = "7px"
-                    createTooltip(tooltip, span)
+                    span.innerText = existingSpan.innerText
+                    existingSpan.innerText = ""
+                    let iconSpan = document.createElement("span")
+                    iconSpan.style.marginLeft = "8px"
                     let icon = document.createElement("img")
                     icon.src = `https://raw.githubusercontent.com/olekdrabina/letterboxdEnhancer/main/assets/${src}.png`
                     icon.alt = tooltip
                     icon.style.height = "25px"
-                    span.appendChild(icon)
-                    headline.appendChild(span)
+                    
+                    existingSpan.appendChild(span)
+                    createTooltip(tooltip, iconSpan)
+                    iconSpan.appendChild(icon)
+                    existingSpan.appendChild(iconSpan)
                 }
                 if (settings.featureLengthIcon && movieType == "movie" && movieRuntime > 40) {
                     createIcon("feature-length_icon", "Feature-length movie")
@@ -421,24 +438,118 @@ chrome.storage.local.get(null, (settings) => {
                 if (settings.tvSeriesIcon && movieType == "tv") {
                     createIcon("tv_icon", "TV series")
                 }
-
-                // function countTitleWraps() {
-                //     const el = document.querySelector("#film-page-wrapper > div.col-17 > section.production-masthead.-shadowed.-productionscreen.-film > div > h1 > span.name.js-widont.prettify")
-                //     const range = document.createRange()
-                //     const lines = []
-                //     for (let i = 0; i < el.textContent.length; i++) {
-                //         range.setStart(el.firstChild, 0);
-                //         range.setEnd(el.firstChild, i + 1);
-
-                //         lines.push(range.getClientRects().length)
-                //     }
-                //     return Math.max(...lines)
-                // }
-                // console.log(countTitleWraps())
             }
 
             // br after title
             if (settings.movieTitleBr) document.querySelector("#film-page-wrapper > div.col-17 > section.production-masthead.-shadowed.-productionscreen.-film > div > h1").after(document.createElement("br"))
+        
+            if (settings.friendsRatingsGraph) {
+                const ratingsMap = {
+                    "★★★★★": 5, 
+                    "★★★★½": 4.5, 
+                    "★★★★": 4, 
+                    "★★★½": 3.5,
+                    "★★★": 3, 
+                    "★★½": 2.5, 
+                    "★★": 2, 
+                    "★½": 1.5, 
+                    "★": 1, 
+                    "½": 0.5
+                }
+
+                const friendsRatingsObserver = new MutationObserver((_, observer) => {
+                    const friendElements = document.querySelectorAll("#film-page-wrapper > div.col-17 > section.section.activity-from-friends.-clear > ul > li .rating")
+                    if (!friendElements.length) return
+
+                    const hasText = [...friendElements].some(el => el.innerText.trim().length > 0)
+                    if (!hasText) return
+
+                    observer.disconnect()
+
+                    let ratings = []
+                    let ratingsAmount = 0
+                    let ratingsSum = 0
+                    friendElements.forEach(friend => {
+                        const rating = ratingsMap[friend.innerText.trim()]
+                        if (rating != undefined) {
+                            ratings.push(rating)
+                            ratingsAmount++
+                            ratingsSum += rating
+                        }
+                    })
+
+                    const chart = document.querySelector("#film-page-wrapper > div.col-17 > aside > section.section.ratings-histogram-chart").cloneNode(true)
+                    const movieSlug = chart.querySelector("header > h2 > a").href.split("/")[4]
+
+                    chart.querySelector("header > h2 > a").textContent = "Friends Ratings"
+                    chart.querySelector("header > h2 > a").href = `https://letterboxd.com/${username}/friends/film/${movieSlug}/ratings/rated/.5-5/`
+
+                    chart.querySelector("header > aside > div > a").textContent = `${ratingsAmount} ${ratingsAmount == 1 ? 'rating' : 'ratings'}`
+                    chart.querySelector("header > aside > div > a").href = `https://letterboxd.com/${username}/friends/film/${movieSlug}/ratings/rated/.5-5/`
+
+                    const getFriendsLikes = async (username, movieSlug) => {
+                        let url = `https://letterboxd.com/${username}/friends/film/${movieSlug}/likes/`
+                        let likes = 0
+
+                        while (url) {
+                            const res = await fetch(url)
+                            if (!res.ok) throw new Error(`HTTP error: ${res.status}`)
+
+                            const html = await res.text()
+                            const doc = new DOMParser().parseFromString(html, "text/html")
+
+                            likes += doc.querySelectorAll('span.has-icon.icon-16.icon-liked').length
+
+                            const next = doc.querySelector('a.next')
+                            url = next ? next.href : null
+                        }
+
+                        return likes
+                    }
+                    (async () => {
+                        try {
+                            const likes = await getFriendsLikes(username, movieSlug)
+                            chart.querySelector("header > aside > div > a").textContent = `${likes} ${likes == 1 ? 'like' : 'likes'}`
+                            chart.querySelector("header > aside > div > a").href = `https://letterboxd.com/${username}/friends/film/${movieSlug}/likes/`
+                        } finally {}
+                    })()
+                    
+                    const averageRating = Math.round((ratingsSum / ratingsAmount) * 10) / 10
+                    chart.querySelector("div > div > a").textContent = averageRating.toFixed(1)
+                    chart.querySelector("div > div > a").href = `https://letterboxd.com/${username}/friends/film/${movieSlug}/ratings/rated/.5-5/`
+                    chart.querySelector("div > div > a").removeAttribute("data-original-title")
+                    createTooltip(`Weighted average of ${averageRating.toFixed(2)} based on ${ratingsAmount} ${ratingsAmount == 1 ? "rating" : "ratings"}`, chart.querySelector("div > div > a"))
+
+                    const ratingsDoubled = ratings.map(r => r * 2)
+                    const counts = {}
+                    ratingsDoubled.forEach(n => {
+                        counts[n] = (counts[n] || 0) + 1
+                    })
+                    const values = Object.values(counts)
+                    const max = Math.max(...values) * (100 / ratingsAmount)
+                    
+                    chart.querySelectorAll("div > div > table > tbody tr").forEach((column, index) => {
+                        column.querySelector("td > a").removeAttribute("data-original-title")
+                        column.querySelector("td > a > span").remove()
+
+                        index += 1
+                        if (!ratingsDoubled.includes(index)) {
+                            column.style = "--value: 0;"
+                        } else {
+                            column.style = `--value: ${(counts[index] * (100 / ratingsAmount)) / max};`
+                        }
+
+                        if (counts[index] == undefined) {
+                            createTooltip(`No ${numberToStars(index / 2)} ratings`, column)
+                        } else {
+                            createTooltip(`${counts[index]} ${numberToStars(index / 2)} ${counts[index] == 1 ? "rating" : "ratings"} (${(counts[index] * (100 / ratingsAmount)).toFixed(0)}%)`, column)
+                        }
+                    })
+
+                    document.querySelector("#film-page-wrapper > div.col-17 > aside").appendChild(chart)
+                })
+                friendsRatingsObserver.observe(document.body, {childList: true, subtree: true})
+            }
         }
 
         // === HOME PAGE ===

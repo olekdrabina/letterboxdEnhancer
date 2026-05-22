@@ -11,3 +11,9 @@ COMMIT 1
 COMMIT 2
 - short icon change
 - fixed extension not working on /film/something pages
+
+COMMIT 3
+- fixed icons for wrapped titles
+- friends ratings
+- added gitignore
+- fixed extensions not working due to letterboxd change of details tabs

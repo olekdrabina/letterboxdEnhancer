@@ -36,6 +36,7 @@ const settings = [
     {name: "TV series icon", key: "tvSeriesIcon"},
     {name: "Wide release date on year hover", key: "yearHoverReleaseDate"},
     {name: "Mpa rating", key: "mpaRating"},
+    {name: "Friends ratings graph", key: "friendsRatingsGraph"},
     {name: "Wide release date in releases tab", key: "wideReleaseDate"},
     {name: "Box office in details", key: "boxOffice"},
     {name: "Budget in details", key: "budget"},
@@ -173,8 +174,11 @@ init()
 // buttons
 document.querySelector(".restoreDefault").addEventListener("click", () => {
     if (confirm("Reset all settings to defaults?")) {
-        chrome.storage.local.clear()
-        window.location.reload()
+        chrome.storage.local.clear(() => {
+            chrome.storage.local.set(defaults, () => {
+                window.location.reload()
+            })
+        })
     }
 })
 
