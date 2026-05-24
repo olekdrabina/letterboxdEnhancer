@@ -17,14 +17,15 @@ Enhances the Letterboxd site with a focus on spoiler-free browsing by hiding fil
 > This is a **user script / local extension**, so it may need to be reloaded after browser updates
 
 ## Features
-> [!NOTE]
-> Options not enabled by default are marked in "_italics_"
-
 ### Settings
 - **Settings page with customization options for most features**
 - Changes require a refresh to take effect
 - Export & import settings
+
 ### Film Page
+> [!NOTE]
+> Options not enabled by default are marked in "_italics_"
+
 - Button for toggling visibility of statistics:
   - Rating
   - _Watches & list appearances_
@@ -63,9 +64,6 @@ If you encounter bugs, have ideas for improvements, or want new features, you ca
 - **Report issues:** Use the [Issues](https://github.com/olekdrabina/letterboxdEnhancer/issues) page on GitHub to report bugs or unexpected behavior
 - **Suggest features:** Submit feature requests or suggestions through the same [Issues](https://github.com/olekdrabina/letterboxdEnhancer/issues) page
 - **Contribute:** Fork the repository, make changes, and submit a pull request
-
-> [!NOTE]
-> Some planned features & bugs are already listed in [todo.txt](https://github.com/olekdrabina/letterboxdEnhancer/blob/main/todo.txt)
 
 ## Preview (1.2.1)
 ### Settings Page
