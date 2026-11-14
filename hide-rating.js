@@ -146,27 +146,16 @@ if (window.location.href.startsWith("https://letterboxd.com/film/") && window.lo
                 }
 
                 function checkWatched() {
-                    function isWatched(selector) {
-                        const el = document.querySelector(selector)
-                        return el ? el.classList.contains('-on') : false
-                    }
-                    const checkSelectors = [
-                        "#userpanel > ul > li.actions-row1 > span.action-large.-watch > span > span > span",
-                        "#userpanel > ul > li.actions-row1 > span.action-large.-watch > a"
-                    ]
-                    let watched = checkSelectors.some(isWatched)
+                    const watchEl = document.querySelector(".action-large.-watch .watch-link-target")
+                    let watched = watchEl ? watchEl.dataset.isWatched == "true" : false
+
                     const ratingEl = document.querySelector("#rateit-range-2")
                     if (ratingEl && ratingEl.getAttribute("aria-valuenow") != "0") {
                         watched = true
                     }
 
-                    if (watched) {
-                        hiddenState = false
-                        changeState(false)
-                    } else {
-                        hiddenState = true
-                        changeState(true)
-                    }
+                    hiddenState = !watched
+                    changeState(hiddenState)
                 }
 
                 let hiddenState = true
@@ -183,6 +172,15 @@ if (window.location.href.startsWith("https://letterboxd.com/film/") && window.lo
                 }
 
                 checkWatched()
+
+                const watchTarget = document.querySelector(".action-large.-watch")
+                if (watchTarget) {
+                    new MutationObserver(() => checkWatched()).observe(watchTarget, {
+                        attributes: true,
+                        subtree: true,
+                        attributeFilter: ["data-is-watched"]
+                    })
+                }
             }
             setTimeout(() => {
                 hideStatistics()

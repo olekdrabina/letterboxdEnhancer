@@ -1,4 +1,4 @@
-import { defaults } from "./defaults.js"
+import {defaults} from "./defaults.js"
 
 function updateIcon(isEnabled) {
     const path = isEnabled ? "assets/logo/16.png" : "assets/logo/16_off.png"
@@ -6,11 +6,10 @@ function updateIcon(isEnabled) {
 }
 
 chrome.runtime.onInstalled.addListener(() => {
-    // Load existing storage, then only write keys that are missing
     chrome.storage.local.get(null, (existing) => {
         const toSet = {}
         for (const [key, value] of Object.entries(defaults)) {
-            if (existing[key] === undefined) {
+            if (existing[key] == undefined) {
                 toSet[key] = value
             }
         }
@@ -30,7 +29,7 @@ chrome.runtime.onStartup.addListener(() => {
 })
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
-    if (namespace === "local" && changes.extensionState) {
+    if (namespace == "local" && changes.extensionState) {
         updateIcon(changes.extensionState.newValue)
     }
 })

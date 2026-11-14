@@ -682,11 +682,15 @@ chrome.storage.local.get(null, (settings) => {
 
         // === OTHER ===
         if (settings.adblock) {
-            const ads = Array.from(document.querySelectorAll('div.banner.banner-950.js-hide-in-app, div.banner.banner-250.js-hide-in-app, div.banner.banner-230.js-hide-in-app')).filter(ad =>
-                ad.querySelector('a[href="/pro/?utm_medium=banner&utm_campaign=get-pro"]')
+            const ads = Array.from(document.querySelectorAll('div.banner.js-hide-in-app')).filter(ad =>
+                ad.querySelector('a[href^="/pro/"][href*="utm_medium=banner"]')
             )
             ads.forEach(ad => ad.remove())
             document.querySelectorAll(".upgrade-kicker").forEach(kicker => kicker.remove())
+
+            document.querySelectorAll("section.account-status").forEach(section => {
+                if (section.querySelector('a[href="/pro/"]')) section.remove()
+            })
             
             const justWatchProObserver = new MutationObserver((_, observer) => {
                 const justWatchPro = document.querySelector("#watch > div.other.-message")
